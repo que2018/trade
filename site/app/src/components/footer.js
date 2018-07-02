@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { Layout } from 'antd';
+
+const { Footer } = Layout;
 
 class ComponentFooter extends Component {
   render() {
     return (
-	    <div>This is the footer</div>
+	    <Footer></Footer>
     );
   }
 }

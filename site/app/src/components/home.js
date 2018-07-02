@@ -14,7 +14,7 @@ const { Header, Content, Footer } = Layout;
 class ComponentHome extends Component {
   render() {
     return (
-	    <div>
+	    <Layout>
 		  <ComponentHeader></ComponentHeader>
 	      <Content>
 		    <BannerAnim prefixCls="banner-user">
@@ -30,7 +30,7 @@ class ComponentHome extends Component {
               </Element>
             </BannerAnim>
 		    <div>
-		      <div>
+		      <div className="trade-block">
 			    <Row>
 			      <Col span={4}><Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" /></Col>
 			      <Col span={20}><Tag>Tag 1</Tag></Col>
@@ -71,7 +71,7 @@ class ComponentHome extends Component {
 		    </div>
 		  </Content>
 		  <ComponentFooter></ComponentFooter>
-		</div>
+		</Layout>
     );
   }
 }

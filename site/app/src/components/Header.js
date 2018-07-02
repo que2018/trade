@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { Layout } from 'antd';
+
+const { Header } = Layout;
 
 class ComponentHeader extends Component {
   render() {
     return (
-	    <div>This is the header</div>
+	    <Header></Header>
     );
   }
 }
