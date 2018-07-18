@@ -10,5 +10,4 @@ class ComponentHeader extends Component {
     );
   }
 }
-
 export default ComponentHeader;
