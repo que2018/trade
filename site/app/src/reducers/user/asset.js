@@ -1,6 +1,5 @@
-const initialState = {
-    balance: [],
-};
+const initialState = []
+
 
 
 export const actionTypes = {
@@ -20,9 +19,7 @@ export const actions = {
 export function reducer(state = initialState, action) {
     switch (action.type) {
         case actionTypes.SET_ALL_BALANCE:
-            return {
-                ...state, balance: [...action.data]
-            };
+            return [ ...action.data ];
 
         default:
             return state;

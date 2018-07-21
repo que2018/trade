@@ -1,5 +1,5 @@
 
-import {reducer as balance} from './userMangeBalance'
+import {reducer as balance} from './asset'
 import {combineReducers} from 'redux'
 
 
