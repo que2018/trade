@@ -12,11 +12,9 @@ class balance extends Component{
         //      balance : []
         // };
     }
-
     componentDidMount(){
         this.props.getAllBalance();
     }
-
 
     render(){   
         return ( <div>  { this.props.balance.map( item => (  <div key={item.name}> {item.name} {item.amount}</div> ) ) }  </div>)

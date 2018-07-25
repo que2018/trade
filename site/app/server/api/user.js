@@ -18,17 +18,17 @@ router.get('/getAllBalance', (req, res) => {
 
 
 // get one balance
-router.get('/getBalance/:id', (req, res) => {
-    var id = req.params.id;  
-    Currency.findById(id).then((currency) => {
-      if (!currency) {
-        return res.status(404).send();
-      }
-      res.send({currency});
-    }).catch((e) => {
-      res.status(400).send(e);
-    });
-  });
+// router.get('/getBalance/:id', (req, res) => {
+//     var id = req.params.id;  
+//     Currency.findById(id).then((currency) => {
+//       if (!currency) {
+//         return res.status(404).send();
+//       }
+//       res.send({currency});
+//     }).catch((e) => {
+//       res.status(400).send(e);
+//     });
+//   });
   
 
 //add 
@@ -45,10 +45,7 @@ router.get('/getBalance/:id', (req, res) => {
 //   });
 
 
-
-
-
-  
+ 
 
 // //remove one currency
 // app.delete('/deleteCurrency/:id', (req, res) => {

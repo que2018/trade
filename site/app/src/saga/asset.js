@@ -4,7 +4,6 @@ import {put, take, call, select} from 'redux-saga/effects'
 import {get, post} from '../util/fetch'
 
 export function* getAllbalance() {
-//fetching data ----> set balance
      yield put({type: gobal.FETCH_START});
        try {
          return yield call(get, '/user/getAllBalance');
