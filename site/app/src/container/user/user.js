@@ -38,8 +38,12 @@ class user extends Component{
 
     render(){
         const {url} = this.props.match;
-        const key0fchildren = this.props.history.location.pathname.substring('/user'.length)
-        const key0fparent  = submenus.find( item => item.children.find(item => item.url === key0fchildren) ).name
+        var keyOfchildren = this.props.history.location.pathname.substring('/user'.length)||'/'
+        if( keyOfchildren.slice(-1) == '/' && keyOfchildren.length > 2 ) {
+            keyOfchildren = keyOfchildren.slice(0, -1) 
+         }
+        var keyOfparent = submenus.find( item => item.children.find(item => item.url === keyOfchildren ) ).name
+
         return(
             <div>
             <Layout style={{ height: '1400px' } }>
@@ -51,8 +55,8 @@ class user extends Component{
                  <div className="logo" />
                     <Menu theme="dark" mode="inline" 
                            //defaultSelectedKeys={[(submenus[0].children)[0].url]}  
-                           selectedKeys={[key0fchildren]}  
-                           defaultOpenKeys = {[key0fparent]}
+                           selectedKeys={[keyOfchildren]}  
+                           defaultOpenKeys = {[keyOfparent]}
                            style={{ padding: '16px 0', width: '100%' }}>
                            {submenus.map((item, index) => 
                              <SubMenu  key= {item.name} title={<span><Icon type={item.iconType}/><span>{item.name}</span></span>}
@@ -75,7 +79,7 @@ class user extends Component{
                         <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
                                 <div>
                                     <Switch> 
-                                            <Route exact path ={`${url}/`} />
+                                            <Route exact path ={url} />
                                             <Route path ={`${url}/balance`} component={balance}/>
                                     </Switch>
                                 </div>

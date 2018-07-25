@@ -14,7 +14,7 @@ const AppRouter= () => (
       <Switch>
         {/* <Route exact path="/" component={test} /> */}
 	          <Route exact path="/" component={ComponentHome} />
-            <Route  path="/user" component={ComponentUser} />
+            <Route path="/user" component={ComponentUser} />
             {/* <Route  path="/balance" component={asset} /> */}
             {/* <Route   path="/test" component={testDashboard} /> */}
             {/* <Route exact path="/user/balance" component={asset} /> */} */}
