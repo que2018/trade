@@ -8,10 +8,10 @@ export function* getAllbalance() {
        try {
          return yield call(get, '/user/getAllBalance');
        } catch (err) {
-         console.log('Error happened!')
+        //  console.log('Error happened!')
        } finally {
         yield put({type: gobal.FETCH_END});
-        console.log('Finish fetching')
+        //  console.log('Finish fetching')
        }
 }
 

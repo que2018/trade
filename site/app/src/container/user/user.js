@@ -7,20 +7,14 @@ import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import balance from './asset'
 // import Sidebar from "./components/sidebar"
 
-
-
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
-
-
 
 const submenus = [
     {name: 'account', iconType: 'user', children :[{url: '/', name: 'profile'}, {url: '/security', name: 'security'}]},
     {name: 'asset', iconType: 'wallet', children  :[{url: '/balance', name: 'balance'}, {url: '/deposit', name: 'deposit'}]},
     {name: 'setting', iconType: 'setting', children  :[{url: '/api', name: 'api'}]},
 ];
-
-
 
 class user extends Component{
     constructor(props){
@@ -59,11 +53,11 @@ class user extends Component{
                            defaultOpenKeys = {[keyOfparent]}
                            style={{ padding: '16px 0', width: '100%' }}>
                            {submenus.map((item, index) => 
-                             <SubMenu  key= {item.name} title={<span><Icon type={item.iconType}/><span>{item.name}</span></span>}
-                                       onClick={({key}) => {this.props.history.push(`/user${key}`)}}> 
-                                       {item.children.map((item, index) => 
-                                        <Menu.Item key = {item.url} > <span>{item.name}</span></Menu.Item>)}
-                             </SubMenu>)
+                           <SubMenu key= {item.name} title={<span><Icon type={item.iconType}/><span>{item.name}</span></span>}
+                                    onClick={({key}) => {this.props.history.push(`/user${key}`)}}> 
+                                    {item.children.map((item, index) => 
+                                    <Menu.Item key = {item.url} > <span>{item.name}</span></Menu.Item>)}
+                           </SubMenu>)
                             } 
                     </Menu>
                 </Sider>  

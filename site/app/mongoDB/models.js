@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 var balance =  new mongoose.Schema({
     name:String ,
-    aount:String
-});
+    amount:Number
+}, { versionKey: false });
 
-module.exports =  mongoose.model('balance', balance,'balance');
+module.exports =  mongoose.model('balance',balance,'balance');

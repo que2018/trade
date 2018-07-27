@@ -6,9 +6,9 @@ import mongoose from 'mongoose'
 // import session from 'express-session'
 
 const port = config.apiPort;
-
 const app = new Express();
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
 // app.use(cookieParser('express_react_cookie'));
 // app.use(session({
 //     secret:'express_react_cookie',
@@ -18,13 +18,14 @@ app.use(bodyParser.urlencoded({extended: false}));
 // }));
 
 
-
 app.use('/user', require('./user'));
 
-// app.use('/admin', require('./admin'));
+app.use('/admin', require('./admin'));
 
 mongoose.Promise = require('bluebird');
-mongoose.connect(`mongodb://${config.dbHost}:${config.dbPort}/Currency`, function (err) {
+
+mongoose.connect( process.env.MONGODB_URI ||`mongodb://${config.dbHost}:${config.dbPort}/Currency`, function (err) {
+// mongoose.connect( 'mongodb://heroku_63w3spxm:bman6bohh381fs06da05r66k4h@ds255451.mlab.com:55451/heroku_63w3spxm', function (err) {
     if (err) {
         console.log(err, "Database disconnected");
         return;

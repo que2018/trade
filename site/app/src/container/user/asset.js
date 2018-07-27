@@ -8,9 +8,6 @@ const {get_all_balance} = actions;
 class balance extends Component{
     constructor(props){
         super(props);
-        // this.state = {  
-        //      balance : []
-        // };
     }
     componentDidMount(){
         this.props.getAllBalance();

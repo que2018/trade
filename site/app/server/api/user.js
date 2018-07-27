@@ -1,16 +1,13 @@
 import Express from 'express'
-
 import {responseClient} from '../util'
-
 import Balance from '../../mongoDB/models'
-
+import bodyParser from 'body-parser'
 const router = Express.Router();
-
 
 // get all balance
 router.get('/getAllBalance', (req, res) => {
-    Balance.find({},{_id:0 }).then( data => {
-      responseClient(res, 200, 0, 'get request successfully', data);
+    Balance.find({}).then( data => {
+      responseClient(res, 200, 0, 'Get request successfully', data);
     } , (e) => {
       responseClient(res);
     });
@@ -18,56 +15,50 @@ router.get('/getAllBalance', (req, res) => {
 
 
 // get one balance
-// router.get('/getBalance/:id', (req, res) => {
-//     var id = req.params.id;  
-//     Currency.findById(id).then((currency) => {
-//       if (!currency) {
-//         return res.status(404).send();
-//       }
-//       res.send({currency});
-//     }).catch((e) => {
-//       res.status(400).send(e);
-//     });
-//   });
+router.get('/getBalance/:id', (req, res) => {
+    var id = req.params.id;  
+    Balance.findOne({name: id}).then((data) => {
+      responseClient(res, 200, 0, 'Get request successfully', data);
+    } , (e) => {
+      responseClient(res);
+    });
+});
   
 
-//add 
-// app.post('/addCurrency', (req, res) => {
-//     var currency = new Currency({
-//         name: req.body.name
-//         //  name: 'xrp'
-//     });
-//     currency.save().then((doc) => {
-//       res.send(doc);
-//     }, (e) => {
-//       res.status(400).send(e);
-//     });
-//   });
+// deposit
+router.post('/deposit', (req, res) => {
+     const coinType = req.body.name ;
+     const despoitAmount = req.body.amount
+     Balance.findOneAndUpdate({name:coinType},{ $inc: {amount:despoitAmount} },{new: true})
+       .then(result=>{
+           responseClient(res, 200, 0,'Deposit successfully',result)
+       }).cancel(err=>{
+       console.log(err);
+       responseClient(res);
+   });
+});
 
 
- 
-
-// //remove one currency
-// app.delete('/deleteCurrency/:id', (req, res) => {
-//   var id = req.params.id;
-//   Currency.findByIdAndRemove(id).then((currency) => {
-//     if (!currency) {
-//       return res.status(404).send();
-//     }
-
-//     res.send({currency});
-//   }).catch((e) => {
-//     res.status(400).send();
-//   });
-// });
+// withdraw
+router.post('/withdraw', (req, res) => {
+      const coinType = req.body.name ;
+      const despoitAmount = -req.body.amount
+      Balance.findOneAndUpdate({name:coinType},{ $inc: {amount:despoitAmount} },{new: true})
+        .then(result=>{
+            responseClient(res, 200, 0,'Deposit successfully',result)
+        }).cancel(err=>{
+        console.log(err);
+        responseClient(res);
+    });
+});
 
 
-// //update one currency
+// update one currency
 // app.patch('/updateCurrency/:id', (req, res) => {
 //   var id = req.params.id;
 
 
-//   Currency.findByIdAndUpdate(id, req.body, {new: true}).then((currency) => {
+//  Currency.findByIdAndUpdate(id, req.body, {new: true}).then((currency) => {
 //     if (!currency) {
 //       return res.status(404).send();
 //     }
@@ -77,22 +68,5 @@ router.get('/getAllBalance', (req, res) => {
 //     res.status(400).send();
 //   })
 // });
-
-// //get all currency 
-// app.get('/getAllCurrency', (req, res) => {
-//     Currency.find().then((crurrency) => {
-//       res.send({crurrency});
-//     }, (e) => {
-//       res.status(400).send(e);
-//     });
-//   });
-  
-
-
-// app.listen(port, () => {
-//   console.log(`Started up at port ${port}`);
-// });
-
-// module.exports = {app};
 
 module.exports = router;
