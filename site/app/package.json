@@ -4,8 +4,8 @@
   "engines": {
               "node": "8.11.1",
               "npm": "5.6.0",
-              "yarn": "1.4.0"
-  },
+              "yarn": "1.7.0"
+             },
   "main": "index.js",
   "author": "Kimmy",
   "license": "MIT",
