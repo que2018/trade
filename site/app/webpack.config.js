@@ -50,13 +50,18 @@ module.exports = (env) => {
     ],
     devtool: isProduction ? 'source-map' : 'inline-source-map',
     devServer: {
+      port:3000,
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true,
       publicPath: '/dist/',
       proxy: {
         '/api':    {
-                     target: 'http://localhost:3030',
-                     pathRewrite: {'^/api' : ''}
+            
+                    //  target: 'http://localhost:3030',
+                     target: 'https://kimmy-webapp-api-server.herokuapp.com',
+                     pathRewrite: {'^/api' : ''},
+                     changeOrigin: true,
+                     secure: false
         }    
       }
     }
