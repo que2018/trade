@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component }  from 'react';
 import { Layout } from 'antd';
 
 const { Header } = Layout;
@@ -10,5 +10,4 @@ class ComponentHeader extends Component {
     );
   }
 }
-
 export default ComponentHeader;
